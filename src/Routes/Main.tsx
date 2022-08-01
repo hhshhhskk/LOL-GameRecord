@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const Header = styled.div`
   background-color: red;
@@ -16,6 +17,17 @@ const Title = styled.div`
   font-size: 66px;
   background-color : blue;
 `;
+
+const Search = styled.form`
+  color: white;
+  display: flex;
+  align-items: center;
+  position: relative;
+  svg {
+    height: 25px;
+  }
+`;
+
 const UserName = styled.input`
   margin-top: 10vh;
 `;
@@ -24,9 +36,17 @@ const UserButton = styled.button`
   font-size: 30px;
 `;
 
+interface IForm {
+    keyword: string;
+}
+
 function Main() {
     const navigate = useNavigate();
-    const onSearchClick = () => navigate("/userinfo");
+    // const onSearchClick = () => navigate("/userinfo");
+    const { register, handleSubmit } = useForm<IForm>();
+    const onValid = (data: IForm) => {
+        navigate(`/search?keyword=${data.keyword}`);
+    };
     return (
         <>
             <Header>
@@ -36,10 +56,15 @@ function Main() {
                 <Title>
                     KMS.GG
                 </Title>
-                <UserName placeholder="UserName"></UserName>
-                <UserButton onClick={onSearchClick}>
-                    Search
-                </UserButton>
+                <Search onSubmit={handleSubmit(onValid)}>
+                    <UserName
+                        {...register("keyword", { required: true, minLength: 2 })}
+                        placeholder="UserName">
+                    </UserName>
+                    <UserButton>
+                        Search
+                    </UserButton>
+                </Search>
             </Wrapper>
         </>
     );
