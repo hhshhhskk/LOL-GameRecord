@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { createGlobalStyle } from "styled-components";
+import { RecoilRoot } from 'recoil';
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -68,13 +70,19 @@ a {
 }
 `;
 
+const client = new QueryClient();
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <App />
+    <RecoilRoot>
+      <QueryClientProvider client={client}>
+        <GlobalStyle />
+        <App />
+      </QueryClientProvider>
+    </RecoilRoot>
   </React.StrictMode>
 );
 
