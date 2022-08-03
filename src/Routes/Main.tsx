@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { getSummonerId } from "../api"
 
 const Header = styled.div`
   background-color: red;
@@ -45,7 +44,6 @@ function Main() {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm<IForm>();
   const onValid = (data: IForm) => {
-    getSummonerId(data.keyword);
     navigate(`/search?keyword=${data.keyword}`);
   };
   return (
