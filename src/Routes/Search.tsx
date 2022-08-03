@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 import styled from "styled-components";
 
 // 롤 API 키는 발급 시 24시간 사용가능
-const API_KEY = "RGAPI-63b794ed-8beb-4929-98cd-a617cbd791c8";
+const API_KEY = "RGAPI-2a8b1cf1-3a00-4024-a6be-b384a598ad84";
 
 const SummonerName = styled.div`
     font-size: 66px;

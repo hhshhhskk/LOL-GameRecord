@@ -37,36 +37,36 @@ const UserButton = styled.button`
 `;
 
 interface IForm {
-  keyword: string;
+    keyword: string;
 }
 
 function Main() {
-  const navigate = useNavigate();
-  const { register, handleSubmit } = useForm<IForm>();
-  const onValid = (data: IForm) => {
-    navigate(`/search?keyword=${data.keyword}`);
-  };
-  return (
-    <>
-      <Header>
-        <h2>header</h2>
-      </Header>
-      <Wrapper>
-        <Title>
-          KMS.GG
-        </Title>
-        <Search onSubmit={handleSubmit(onValid)}>
-          <UserName
-            {...register("keyword", { required: true, minLength: 2 })}
-            placeholder="username">
-          </UserName>
-          <UserButton>
-            Search
-          </UserButton>
-        </Search>
-      </Wrapper>
-    </>
-  );
+    const navigate = useNavigate();
+    const { register, handleSubmit } = useForm<IForm>();
+    const onValid = (data: IForm) => {
+        navigate(`/search?keyword=${data.keyword}`);
+    };
+    return (
+        <>
+            <Header>
+                <h2>header</h2>
+            </Header>
+            <Wrapper>
+                <Title>
+                    KMS.GG
+                </Title>
+                <Search onSubmit={handleSubmit(onValid)}>
+                    <UserName
+                        {...register("keyword", { required: true, minLength: 2 })}
+                        placeholder="username">
+                    </UserName>
+                    <UserButton>
+                        Search
+                    </UserButton>
+                </Search>
+            </Wrapper>
+        </>
+    );
 }
 
 export default Main;

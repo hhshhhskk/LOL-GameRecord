@@ -73,16 +73,16 @@ a {
 const client = new QueryClient();
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+    document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <RecoilRoot>
-      <QueryClientProvider client={client}>
-        <GlobalStyle />
-        <App />
-      </QueryClientProvider>
-    </RecoilRoot>
-  </React.StrictMode>
+    <React.StrictMode>
+        <RecoilRoot>
+            <QueryClientProvider client={client}>
+                <GlobalStyle />
+                <App />
+            </QueryClientProvider>
+        </RecoilRoot>
+    </React.StrictMode>
 );
 
