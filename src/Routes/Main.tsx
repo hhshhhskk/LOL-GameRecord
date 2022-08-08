@@ -43,7 +43,7 @@ interface IForm {
 function Main() {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm<IForm>();
-  const onValid = (data: IForm) => {
+  const onValid = async (data: IForm) => {
     navigate(`/search?keyword=${data.keyword}`);
   };
   return (

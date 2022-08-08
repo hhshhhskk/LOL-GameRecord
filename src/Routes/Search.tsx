@@ -1,7 +1,8 @@
 import { useLocation } from "react-router";
 import { useQuery } from "react-query";
 import styled from "styled-components";
-import { getSummonerId, getSummonerData } from '../api'
+import { getSummonerId, getSummonerData } from '../api';
+import { makeImagePath } from '../utils';
 
 const Wrapper = styled.div`
   display: flex;
@@ -29,11 +30,26 @@ const Board = styled.div`
   border-radius: 5px;
   min-height: 300px;
 `;
+const SummonerIcon = styled.div`
+`;
+
 const SummonerName = styled.div`
     font-size: 25px;
     color: black;
 `;
 
+const SummonerTier = styled.div`
+    font-size: 25px;
+    color: black;
+    text-align: center;
+    img {
+        display: flex;
+        width: 200px;
+        height: 200px;
+    }
+`;
+const TierImg = styled.div`
+`;
 function Search() {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
@@ -48,22 +64,35 @@ function Search() {
             enabled: !!summonerId,
         }
     );
-
+    const imgUrl = `../ranked-emblems/${summonerInfoData?.[0]?.tier}.png`;
     return (
 
         <Wrapper>
             <Boards>
                 <Board>
+                    <SummonerIcon>
+                        <img
+                            src={makeImagePath(summonerIdData?.profileIconId)}
+                            alt="이미지를 불러올 수 없습니다."
+                        />
+                    </SummonerIcon>
                     <SummonerName>
-                        아이콘, {summonerIdData?.name}
+                        {summonerIdData?.name}
                     </SummonerName>
                 </Board>
                 <Board>
-                    <SummonerName>
+                    <SummonerTier>
+                        <TierImg>
+                            <img
+                                className="tierImg"
+                                src={imgUrl}
+                                alt="티어 이미지를 불러올 수 없습니다."
+                            />
+                        </TierImg>
                         <div>{summonerInfoData?.[0]?.tier}</div>
-                        <div>{summonerInfoData?.[0]?.wins}승</div>
-                        <div>{summonerInfoData?.[0]?.losses}패</div>
-                    </SummonerName>
+                        <span>{summonerInfoData?.[0]?.wins}승 </span>
+                        <span>{summonerInfoData?.[0]?.losses}패</span>
+                    </SummonerTier>
                 </Board>
                 <Board>
                     <SummonerName>
@@ -76,7 +105,7 @@ function Search() {
                     </SummonerName>
                 </Board>
             </Boards>
-        </Wrapper>
+        </Wrapper >
 
     )
 

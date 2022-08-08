@@ -1,5 +1,5 @@
 // 롤 API 키는 발급 시 24시간 사용가능
-const API_KEY = "RGAPI-9896f12e-3de9-46c6-9471-e0823f14066a";
+const API_KEY = "RGAPI-b5f45ff8-7ad5-45da-8c35-2d5cfcab9cc0";
 
 // export interface IgetSummonerId {
 //   id: string;
