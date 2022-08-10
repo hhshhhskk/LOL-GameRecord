@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 
 const Header = styled.div`
-  background-color: red;
+  background-color: rgb(111, 111, 111);
 `;
 const Wrapper = styled.div`
   display: flex;
@@ -18,7 +18,6 @@ const Title = styled.div`
 `;
 
 const Search = styled.form`
-  color: white;
   display: flex;
   align-items: center;
   position: relative;
@@ -32,14 +31,19 @@ const UserName = styled.input`
   height: 32px;
   font-size: 15px;
   border: 0;
-  border-radius: 15px;
+  border-radius: 15px 0 0 15px;
   outline: none;
   padding-left: 10px;
   background-color: rgb(233, 233, 233);
 `;
 const UserButton = styled.button`
-  margin-top: 5vh;
-  font-size: 30px;
+  width: 40px;
+  height: 32px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 0 15px 15px 0;
+  outline: none;
+  background-color: rgb(233, 233, 233);
 `;
 const SvgK = styled.svg`
   width: 100px;
@@ -146,7 +150,12 @@ function Main() {
             placeholder="username">
           </UserName>
           <UserButton>
-            Search
+            <svg
+              fill="rgb(111, 111, 111)"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+            >
+              <path d="M500.3 443.7l-119.7-119.7c27.22-40.41 40.65-90.9 33.46-144.7C401.8 87.79 326.8 13.32 235.2 1.723C99.01-15.51-15.51 99.01 1.724 235.2c11.6 91.64 86.08 166.7 177.6 178.9c53.8 7.189 104.3-6.236 144.7-33.46l119.7 119.7c15.62 15.62 40.95 15.62 56.57 0C515.9 484.7 515.9 459.3 500.3 443.7zM79.1 208c0-70.58 57.42-128 128-128s128 57.42 128 128c0 70.58-57.42 128-128 128S79.1 278.6 79.1 208z" />
+            </svg>
           </UserButton>
         </Search>
       </Wrapper>

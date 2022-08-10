@@ -1,5 +1,5 @@
 // 롤 API 키는 발급 시 24시간 사용가능
-const API_KEY = "RGAPI-ba175ea8-1c21-4634-97b5-eac0f5d4574c";
+const API_KEY = "RGAPI-7f00b3f9-ef14-4e96-8238-267fc3758987";
 
 // export interface IgetSummonerId {
 //   id: string;
@@ -36,7 +36,6 @@ export function getSummonerId(summonerName: any) {
 }
 // getSummonerId에서 가져온 Id로 소환사 데이터 API호출
 export function getSummonerData(summonerId: string) {
-    console.log(summonerId);
     return fetch(
         `https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/${summonerId}?api_key=${API_KEY}`
     )
