@@ -1,5 +1,6 @@
+
 // 롤 API 키는 발급 시 24시간 사용가능
-const API_KEY = "RGAPI-7f00b3f9-ef14-4e96-8238-267fc3758987";
+const API_KEY = "RGAPI-9e5e7bdb-1141-4295-86ee-7cadc2e14449";
 
 // export interface IgetSummonerId {
 //   id: string;
@@ -39,7 +40,11 @@ export function getSummonerData(summonerId: string) {
     return fetch(
         `https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/${summonerId}?api_key=${API_KEY}`
     )
-        .then((response) => response.json())
+        .then((response) => response.json());
 }
 
-export async function getSummoerName() {}
+// 로테이션 무료 챔피언 리스트
+export function getChampionRotation() {
+    return fetch(`https://kr.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=${API_KEY}`)
+        .then((response) => response.json());
+}

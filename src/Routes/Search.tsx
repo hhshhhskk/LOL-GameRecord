@@ -50,7 +50,7 @@ const SummonerInfo = styled.div`
     flex-direction: row;
 `;
 const SummonerName = styled.div`
-    font-size: 44px;
+    font-size: 24px;
     color: black;
 `;
 const SummonerLevel = styled.div`
@@ -117,9 +117,9 @@ function Search() {
             enabled: !!summonerId,
         }
     );
-    console.log(summonerInfoData);
+    //console.log(summonerInfoData);
     const imgUrl = `../ranked-emblems/${summonerInfoData?.[0]?.tier}.png`;
-
+    console.log(imgUrl);
     return (
         <Wrapper>
             <Boards variants={boardsVariants} initial="start" animate="end">

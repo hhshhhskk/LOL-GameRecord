@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
+import { ChampionRotations } from "../components/ChampionRotations";
 
 const Header = styled.div`
   background-color: rgb(111, 111, 111);
@@ -90,6 +91,8 @@ function Main() {
   const onValid = async (data: IForm) => {
     navigate(`/search?keyword=${data.keyword}`);
   };
+
+
   return (
     <>
       <Header>
@@ -159,6 +162,7 @@ function Main() {
           </UserButton>
         </Search>
       </Wrapper>
+      <ChampionRotations></ChampionRotations>
     </>
   );
 }
