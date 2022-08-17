@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { getChampionRotation } from '../api';
+import { makeChampionImagePath } from '../utils';
 
 const Wrapper = styled.div`
 `;
@@ -41,10 +42,10 @@ const RotationBox = styled(motion.div)`
   width: 100%;
 `;
 
-const ChampionBox = styled(motion.div)`
+const ChampionBox = styled(motion.img)`
   background-color: white;
   border-radius: 100px;
-  height: 200px;
+  height: 130px;
   color: red;
   font-size: 50px;
   text-align: center;
@@ -79,7 +80,7 @@ export function ChampionRotations() {
     };
     const toggleLeaving = () => setLeaving((prev) => !prev)
     const { data: rotationChampionData, isLoading } = useQuery(["lol", "platform", "v3", "champion-rotations"], getChampionRotation);
-
+    console.log(rotationChampionData);
     return (
         <Wrapper>
             {isLoading ? (
@@ -109,7 +110,11 @@ export function ChampionRotations() {
                                 key={index}
                             >
                                 {rotationIdx.map((i) => (
-                                    <ChampionBox key={i}>{rotationChampionData?.freeChampionIds[i]}</ChampionBox>
+                                    <ChampionBox
+                                        key={i}
+                                        src={makeChampionImagePath(rotationChampionData?.freeChampionNames[i])}
+                                        alt="이미지를 불러올 수 없습니다."
+                                    ></ChampionBox>
                                 ))}
                             </RotationBox>
                         </AnimatePresence>

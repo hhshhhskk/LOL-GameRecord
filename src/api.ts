@@ -1,6 +1,6 @@
 
 // 롤 API 키는 발급 시 24시간 사용가능
-const API_KEY = "RGAPI-09793e57-4e75-4077-88ae-4aada5cf8426";
+// const API_KEY = "RGAPI-5ac31fb1-e547-4afa-84b0-3abb8a500a77";
 
 // export interface IgetSummonerId {
 //   id: string;
@@ -28,23 +28,28 @@ const API_KEY = "RGAPI-09793e57-4e75-4077-88ae-4aada5cf8426";
 //     hotStreak: boolean,
 // }
 
-// 입력한 소환사 이름으로 소환사 ID값 API호출
-export function getSummonerId(summonerName: any) {
+// 입력한 소환사 이름으로 소환사계정 정보
+export function getSummonerId(summonerName: string | null) {
     return fetch(
-        `https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${API_KEY}`
+        `http://218.233.255.245:8080/search/riot-api/summonerAccount?summoner=${summonerName}`
     )
         .then((response) => response.json())
 }
-// getSummonerId에서 가져온 Id로 소환사 데이터 API호출
-export function getSummonerData(summonerId: string) {
+// 입력한 소환사 이름으로 소환사 정보
+export function getSummonerData(summonerName: string | null) {
     return fetch(
-        `https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/${summonerId}?api_key=${API_KEY}`
+        `http://218.233.255.245:8080/search/riot-api/summonerInfo?summoner=${summonerName}`
     )
         .then((response) => response.json());
 }
 
 // 로테이션 무료 챔피언 리스트
 export function getChampionRotation() {
-    return fetch(`https://kr.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=${API_KEY}`)
+    return fetch(`http://218.233.255.245:8080/search/riot-api/rotation`)
+        .then((response) => response.json());
+}
+
+export function getChampionName() {
+    return fetch(`http://ddragon.leagueoflegends.com/cdn/12.15.1/data/en_US/champion.json`)
         .then((response) => response.json());
 }
