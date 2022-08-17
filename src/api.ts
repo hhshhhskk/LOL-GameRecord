@@ -43,12 +43,19 @@ export function getSummonerData(summonerName: string | null) {
         .then((response) => response.json());
 }
 
+// 입력한 소환사 이름으로 모스트3 챔피언 정보 
+export function getChampionMost(summonerName: string | null) {
+    return fetch(`http://218.233.255.245:8080/search/mostChamp?summoner=${summonerName}`)
+        .then((response) => response.json());
+}
+
 // 로테이션 무료 챔피언 리스트
 export function getChampionRotation() {
     return fetch(`http://218.233.255.245:8080/search/riot-api/rotation`)
         .then((response) => response.json());
 }
 
+// 챔피언 정보 
 export function getChampionName() {
     return fetch(`http://ddragon.leagueoflegends.com/cdn/12.15.1/data/en_US/champion.json`)
         .then((response) => response.json());

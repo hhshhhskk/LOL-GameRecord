@@ -1,7 +1,7 @@
 import { useLocation } from "react-router";
 import { useQuery } from "react-query";
 import styled from "styled-components";
-import { getSummonerId, getSummonerData } from '../api';
+import { getSummonerId, getSummonerData, getChampionMost } from '../api';
 import { makeImagePath } from '../utils';
 import { motion } from "framer-motion";
 
@@ -110,7 +110,7 @@ function Search() {
             enabled: !!summonerName,
         }
     );
-    console.log(summonerIdData);
+    // console.log(summonerIdData);
     const { data: summonerInfoData } = useQuery(["lol", "league", "v4", "entries", "by-summoner"], () => getSummonerData(summonerName),
         {
             enabled: !!summonerName,
@@ -118,7 +118,14 @@ function Search() {
     );
     //console.log(summonerInfoData);
     const imgUrl = `../ranked-emblems/${summonerInfoData?.tier}.png`;
-    console.log(imgUrl);
+    // console.log(imgUrl);
+
+    const { data: summonerMostData } = useQuery(["lol"], () => getChampionMost(summonerName),
+        {
+            enabled: !!summonerName,
+        }
+    );
+    console.log(summonerMostData);
     return (
         <Wrapper>
             <Boards variants={boardsVariants} initial="start" animate="end">
@@ -157,6 +164,7 @@ function Search() {
                 <Board variants={boardVariants}>
                     <SummonerName>
                         모스트 3
+                        <div>{summonerMostData?.[0]}</div>
                     </SummonerName>
                 </Board>
                 <Board variants={boardVariants}>
