@@ -2,7 +2,7 @@ import { useLocation } from "react-router";
 import { useQuery } from "react-query";
 import styled from "styled-components";
 import { getSummonerId, getSummonerData, getChampionMost } from '../api';
-import { makeImagePath } from '../utils';
+import { makeImagePath, makeChampionImagePath } from '../utils';
 import { motion } from "framer-motion";
 
 const Wrapper = styled.div`
@@ -69,6 +69,14 @@ const SummonerTier = styled.div`
     }
 `;
 const TierImg = styled.div`
+`;
+
+const ChampionBox = styled(motion.img)`
+  background-color: white;
+  border-radius: 100px;
+  height: 130px;
+  font-size: 50px;
+  text-align: center;
 `;
 
 // Variants
@@ -165,6 +173,13 @@ function Search() {
                     <SummonerName>
                         모스트 3
                         <div>{summonerMostData?.[0]}</div>
+                        {[0, 1, 2].map((i) => (
+                            <ChampionBox
+                                key={i}
+                                src={makeChampionImagePath(summonerMostData?.[i])}
+                                alt="이미지를 불러올 수 없습니다."
+                            ></ChampionBox>
+                        ))}
                     </SummonerName>
                 </Board>
                 <Board variants={boardVariants}>
