@@ -71,13 +71,17 @@ const SummonerTier = styled.div`
 const TierImg = styled.div`
 `;
 
-const ChampionBox = styled(motion.img)`
-  background-color: white;
-  border-radius: 100px;
-  height: 130px;
-  font-size: 50px;
-  text-align: center;
+const SummonerMost = styled.div`
+    flex-direction: row;
+    font-size: 30px;
+    color: black;
 `;
+
+const ChampionBox = styled(motion.img)`
+  border-radius: 100px;
+  height: 60px;
+`;
+// interface
 
 // Variants
 const boardsVariants = {
@@ -170,17 +174,19 @@ function Search() {
                     </SummonerTier>
                 </Board>
                 <Board variants={boardVariants}>
-                    <SummonerName>
-                        모스트 3
-                        <div>{summonerMostData?.[0]}</div>
+                    <SummonerMost>
+                        <div>모스트 3</div>
                         {[0, 1, 2].map((i) => (
-                            <ChampionBox
-                                key={i}
-                                src={makeChampionImagePath(summonerMostData?.[i])}
-                                alt="이미지를 불러올 수 없습니다."
-                            ></ChampionBox>
+                            <>
+                                <ChampionBox
+                                    key={i}
+                                    src={makeChampionImagePath(summonerMostData?.[i].champion)}
+                                    alt="이미지를 불러올 수 없습니다."
+                                ></ChampionBox>
+                                <div>{summonerMostData?.[i].champion}</div>
+                            </>
                         ))}
-                    </SummonerName>
+                    </SummonerMost>
                 </Board>
                 <Board variants={boardVariants}>
                     <SummonerName>
