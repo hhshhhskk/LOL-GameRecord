@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { getSummonerId, getSummonerData, getChampionMost } from '../api';
 import { makeImagePath, makeChampionImagePath } from '../utils';
 import { motion } from "framer-motion";
+import { Header } from "../components/Header";
 
 const Wrapper = styled.div`
   display: flex;
@@ -139,63 +140,65 @@ function Search() {
     );
     console.log(summonerMostData);
     return (
-        <Wrapper>
-            <Boards variants={boardsVariants} initial="start" animate="end">
-                <SummonerBoard
-                    variants={boardVariants}
-                >
-                    <SummonerIcon>
-                        <img
-                            src={makeImagePath(summonerIdData?.profileIconId)}
-                            alt="이미지를 불러올 수 없습니다."
-                        />
-                    </SummonerIcon>
-                    <SummonerInfo>
-                        <SummonerName>
-                            {summonerIdData?.name}
-                        </SummonerName>
-                        <SummonerLevel>
-                            Level.{summonerIdData?.summonerLevel}
-                        </SummonerLevel>
-                    </SummonerInfo>
-                </SummonerBoard>
-                <Board variants={boardVariants}>
-                    <SummonerTier>
-                        <TierImg>
+        <>
+            <Header />
+            <Wrapper>
+                <Boards variants={boardsVariants} initial="start" animate="end">
+                    <SummonerBoard
+                        variants={boardVariants}
+                    >
+                        <SummonerIcon>
                             <img
-                                className="tierImg"
-                                src={imgUrl}
-                                alt="티어 이미지를 불러올 수 없습니다."
+                                src={makeImagePath(summonerIdData?.profileIconId)}
+                                alt="이미지를 불러올 수 없습니다."
                             />
-                        </TierImg>
-                        <div>{summonerInfoData?.tier}</div>
-                        <span>{summonerInfoData?.wins}승 </span>
-                        <span>{summonerInfoData?.losses}패</span>
-                    </SummonerTier>
-                </Board>
-                <Board variants={boardVariants}>
-                    <SummonerMost>
-                        <div>모스트 3</div>
-                        {[0, 1, 2].map((i) => (
-                            <>
-                                <ChampionBox
-                                    key={i}
-                                    src={makeChampionImagePath(summonerMostData?.[i].champion)}
-                                    alt="이미지를 불러올 수 없습니다."
-                                ></ChampionBox>
-                                <div>{summonerMostData?.[i].champion}</div>
-                            </>
-                        ))}
-                    </SummonerMost>
-                </Board>
-                <Board variants={boardVariants}>
-                    <SummonerName>
-                        최근 전적 3
-                    </SummonerName>
-                </Board>
-            </Boards>
-        </Wrapper >
-
+                        </SummonerIcon>
+                        <SummonerInfo>
+                            <SummonerName>
+                                {summonerIdData?.name}
+                            </SummonerName>
+                            <SummonerLevel>
+                                Level.{summonerIdData?.summonerLevel}
+                            </SummonerLevel>
+                        </SummonerInfo>
+                    </SummonerBoard>
+                    <Board variants={boardVariants}>
+                        <SummonerTier>
+                            <TierImg>
+                                <img
+                                    className="tierImg"
+                                    src={imgUrl}
+                                    alt="티어 이미지를 불러올 수 없습니다."
+                                />
+                            </TierImg>
+                            <div>{summonerInfoData?.tier}</div>
+                            <span>{summonerInfoData?.wins}승 </span>
+                            <span>{summonerInfoData?.losses}패</span>
+                        </SummonerTier>
+                    </Board>
+                    <Board variants={boardVariants}>
+                        <SummonerMost>
+                            <div>모스트 3</div>
+                            {[0, 1, 2].map((i) => (
+                                <div key={i}>
+                                    <ChampionBox
+                                        key={i}
+                                        src={makeChampionImagePath(summonerMostData?.[i].champion)}
+                                        alt="이미지를 불러올 수 없습니다."
+                                    ></ChampionBox>
+                                    <div>{summonerMostData?.[i].champion}</div>
+                                </div>
+                            ))}
+                        </SummonerMost>
+                    </Board>
+                    <Board variants={boardVariants}>
+                        <SummonerName>
+                            최근 전적 3
+                        </SummonerName>
+                    </Board>
+                </Boards>
+            </Wrapper >
+        </>
     )
 
 }

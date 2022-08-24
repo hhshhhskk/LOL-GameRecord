@@ -3,7 +3,7 @@
 // const API_KEY = "RGAPI-5ac31fb1-e547-4afa-84b0-3abb8a500a77";
 
 //서버 주소
-const sever = "http://13.209.99.37:8080";
+const sever = "http://43.200.183.17:8080";
 
 // export interface IgetSummonerId {
 //   id: string;

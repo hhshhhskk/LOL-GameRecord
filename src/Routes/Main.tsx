@@ -3,16 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { ChampionRotations } from "../components/ChampionRotations";
+import { Header } from "../components/Header";
 
-const Header = styled.div`
-  background-color: rgb(111, 111, 111);
-`;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
+
 const Title = styled.div`
   margin-top: 20vh;
   font-size: 66px;
@@ -95,9 +94,7 @@ function Main() {
 
   return (
     <>
-      <Header>
-        <h2>header</h2>
-      </Header>
+      <Header />
       <Wrapper>
         <Title>
           <SvgK

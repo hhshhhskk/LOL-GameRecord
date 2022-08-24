@@ -112,7 +112,7 @@ export function ChampionRotations() {
                                 {rotationIdx.map((i) => (
                                     <ChampionBox
                                         key={i}
-                                        src={makeChampionImagePath(rotationChampionData?.freeChampionNames[i])}
+                                        src={makeChampionImagePath(rotationChampionData.freeChampionNames?.[i])}
                                         alt="이미지를 불러올 수 없습니다."
                                     ></ChampionBox>
                                 ))}
