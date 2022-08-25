@@ -8,7 +8,7 @@ import { Header } from "../components/Header";
 
 const Wrapper = styled.div`
   display: flex;
-  max-width: 700px;
+  max-width: 800px;
   width: 100%;
   margin: 0 auto;
   justify-content: center;
@@ -77,10 +77,25 @@ const SummonerMost = styled.div`
     font-size: 30px;
     color: black;
 `;
+const GameCount = styled.div`
+  margin-top: 10%;  
+`;
+const MostBox = styled.div`
+    display: flex;
+    margin-top: 10%;
+    font-size: 18px;
+    gap: 15px;
+`;
 
 const ChampionBox = styled(motion.img)`
   border-radius: 100px;
   height: 60px;
+`;
+
+const MostTable = styled.table`
+  td {
+        padding: 7px;
+  }
 `;
 // interface
 
@@ -180,14 +195,26 @@ function Search() {
                         <SummonerMost>
                             <div>모스트 3</div>
                             {[0, 1, 2].map((i) => (
-                                <div key={i}>
+                                <MostBox key={i}>
                                     <ChampionBox
                                         key={i}
                                         src={makeChampionImagePath(summonerMostData?.[i].champion)}
                                         alt="이미지를 불러올 수 없습니다."
-                                    ></ChampionBox>
-                                    <div>{summonerMostData?.[i].champion}</div>
-                                </div>
+                                    />
+                                    <GameCount>{summonerMostData?.[i].count}게임
+                                    </GameCount>
+                                    <MostTable>
+                                        <tr>
+                                            <td>KDA</td>
+                                            <td>승률</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{summonerMostData?.[i].kda}</td>
+                                            <td>{summonerMostData?.[i].winRate}%</td>
+                                        </tr>
+
+                                    </MostTable>
+                                </MostBox>
                             ))}
                         </SummonerMost>
                     </Board>

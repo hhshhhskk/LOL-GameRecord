@@ -9,6 +9,8 @@ const HeaderDiv = styled.div`
 `;
 
 const HomeSvg = styled.svg`
+  margin-top: 5px;
+  margin-left: 10px;
   width: 30px;
   height: 30px;
 `;

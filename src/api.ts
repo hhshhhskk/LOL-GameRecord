@@ -1,6 +1,6 @@
 
 // 롤 API 키는 발급 시 24시간 사용가능
-// const API_KEY = "RGAPI-5ac31fb1-e547-4afa-84b0-3abb8a500a77";
+// const API_KEY = "RGAPI-7be927de-f6a2-4fd3-bab4-dd9da85b123c";
 
 //서버 주소
 const sever = "http://43.200.183.17:8080";
@@ -37,7 +37,9 @@ export function getSummonerId(summonerName: string | null) {
         `${sever}/search/riot-api/summonerAccount?summoner=${summonerName}`
     )
         .then((response) => response.json())
+    
 }
+
 // 입력한 소환사 이름으로 소환사 정보
 export function getSummonerData(summonerName: string | null) {
     return fetch(
