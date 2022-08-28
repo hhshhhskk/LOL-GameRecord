@@ -204,15 +204,16 @@ function Search() {
                                     <GameCount>{summonerMostData?.[i].count}게임
                                     </GameCount>
                                     <MostTable>
-                                        <tr>
-                                            <td>KDA</td>
-                                            <td>승률</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{summonerMostData?.[i].kda}</td>
-                                            <td>{summonerMostData?.[i].winRate}%</td>
-                                        </tr>
-
+                                        <tbody>
+                                            <tr>
+                                                <td>KDA</td>
+                                                <td>승률</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{summonerMostData?.[i].kda}</td>
+                                                <td>{summonerMostData?.[i].winRate}%</td>
+                                            </tr>
+                                        </tbody>
                                     </MostTable>
                                 </MostBox>
                             ))}
