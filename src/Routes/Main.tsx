@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { ChampionRotations } from "../components/ChampionRotations";
-import { Header } from "../components/Header";
 
 const Wrapper = styled.div`
   display: flex;
@@ -94,7 +93,6 @@ function Main() {
 
   return (
     <>
-      <Header />
       <Wrapper>
         <Title>
           <SvgK

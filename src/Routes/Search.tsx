@@ -1,10 +1,9 @@
 import { useLocation } from "react-router";
 import { useQuery } from "react-query";
 import styled from "styled-components";
-import { getSummonerId, getSummonerData, getChampionMost } from '../api';
+import { getSummonerId, getSummonerData, getChampionMost, getRecentRecord } from '../api';
 import { makeImagePath, makeChampionImagePath } from '../utils';
 import { motion } from "framer-motion";
-import { Header } from "../components/Header";
 
 const Wrapper = styled.div`
   display: flex;
@@ -97,6 +96,13 @@ const MostTable = styled.table`
         padding: 7px;
   }
 `;
+
+const RecentRecord = styled.div`
+    flex-direction: row;
+    font-size: 30px;
+    color: black;
+`;
+
 // interface
 
 // Variants
@@ -153,10 +159,16 @@ function Search() {
             enabled: !!summonerName,
         }
     );
-    console.log(summonerMostData);
+    //console.log(summonerMostData);
+
+    const { data: summonerRecentData } = useQuery(["lol", "search"], () => getRecentRecord(summonerName),
+        {
+            enabled: !!summonerName,
+        }
+    );
+
     return (
         <>
-            <Header />
             <Wrapper>
                 <Boards variants={boardsVariants} initial="start" animate="end">
                     <SummonerBoard
@@ -220,9 +232,10 @@ function Search() {
                         </SummonerMost>
                     </Board>
                     <Board variants={boardVariants}>
-                        <SummonerName>
+                        <RecentRecord>
                             최근 전적 3
-                        </SummonerName>
+                            {summonerRecentData?.[0].type}
+                        </RecentRecord>
                     </Board>
                 </Boards>
             </Wrapper >

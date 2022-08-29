@@ -36,18 +36,16 @@ const Slider = styled.div`
 
 const RotationBox = styled(motion.div)`
   display: grid;
-  gap: 10px;
   grid-template-columns: repeat(8, 1fr);
   position: absolute;
+  margin-left: 2%;
   width: 100%;
 `;
 
 const ChampionBox = styled(motion.img)`
-  background-color: white;
+  border: solid 1px white;  
   border-radius: 100px;
   height: 130px;
-  color: red;
-  font-size: 50px;
   text-align: center;
 `;
 

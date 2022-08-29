@@ -54,6 +54,11 @@ export function getChampionMost(summonerName: string | null) {
         .then((response) => response.json());
 }
 
+// 입력한 소환사 이름으로 최근전적 정보
+export function getRecentRecord(summonerName: string | null) {
+    return fetch(`${sever}/search/recentGame?summoner=${summonerName}`)
+        .then((response) => response.json());
+}
 // 로테이션 무료 챔피언 리스트
 export function getChampionRotation() {
     return fetch(`${sever}/search/riot-api/rotation`)
