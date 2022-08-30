@@ -1,10 +1,15 @@
+import { useRecoilState } from "recoil";
 import { useLocation } from "react-router";
 import { useQuery } from "react-query";
 import styled from "styled-components";
-import { getSummonerId, getSummonerData, getChampionMost } from '../api';
-import { makeImagePath, makeChampionImagePath } from '../utils';
 import { motion } from "framer-motion";
+import { getSummonerId } from '../api';
+import { makeImagePath } from '../utils';
+import { summonerNameAtom } from "../atoms"
+import { SummonerTier } from "../components/SummonerTier";
+import { SummonerMost } from "../components/SummonerMost";
 import { RecentRecord } from "../components/RecentRecord";
+import { useEffect } from "react";
 
 const Wrapper = styled.div`
   display: flex;
@@ -60,45 +65,8 @@ const SummonerLevel = styled.div`
     color: black;
 `;
 
-const SummonerTier = styled.div`
-    font-size: 25px;
-    color: black;
-    text-align: center;
-    img {
-        width: 200px;
-        height: 200px;
-    }
-`;
-const TierImg = styled.div`
-`;
-
-const SummonerMost = styled.div`
-    flex-direction: row;
-    font-size: 30px;
-    color: black;
-`;
-const GameCount = styled.div`
-  margin-top: 10%;  
-`;
-const MostBox = styled.div`
-    display: flex;
-    margin-top: 10%;
-    font-size: 18px;
-    gap: 15px;
-`;
-
-const ChampionBox = styled(motion.img)`
-  border-radius: 100px;
-  height: 60px;
-`;
-
-const MostTable = styled.table`
-  td {
-        padding: 7px;
-  }
-`;
-
 // interface
+
 
 // Variants
 const boardsVariants = {
@@ -133,28 +101,17 @@ const boardVariants = {
 function Search() {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
-    const summonerName = searchParams.get("keyword");
+    const getSummonerName = searchParams.get("keyword");
+    const [summonerName, setSummonerName] = useRecoilState<string | null>(summonerNameAtom);
+    useEffect(() => {
+        setSummonerName(getSummonerName);
+    });
     const { data: summonerIdData } = useQuery(["lol", "summoner", "v4", "summoners", "by-name"], () => getSummonerId(summonerName),
         {
             enabled: !!summonerName,
         }
     );
     // console.log(summonerIdData);
-    const { data: summonerInfoData } = useQuery(["lol", "league", "v4", "entries", "by-summoner"], () => getSummonerData(summonerName),
-        {
-            enabled: !!summonerName,
-        }
-    );
-    //console.log(summonerInfoData);
-    const imgUrl = `../ranked-emblems/${summonerInfoData?.tier}.png`;
-    // console.log(imgUrl);
-
-    const { data: summonerMostData } = useQuery(["lol"], () => getChampionMost(summonerName),
-        {
-            enabled: !!summonerName,
-        }
-    );
-    //console.log(summonerMostData);
 
     return (
         <>
@@ -179,46 +136,10 @@ function Search() {
                         </SummonerInfo>
                     </SummonerBoard>
                     <Board variants={boardVariants}>
-                        <SummonerTier>
-                            <TierImg>
-                                <img
-                                    className="tierImg"
-                                    src={imgUrl}
-                                    alt="티어 이미지를 불러올 수 없습니다."
-                                />
-                            </TierImg>
-                            <div>{summonerInfoData?.tier}</div>
-                            <span>{summonerInfoData?.wins}승 </span>
-                            <span>{summonerInfoData?.losses}패</span>
-                        </SummonerTier>
+                        <SummonerTier />
                     </Board>
                     <Board variants={boardVariants}>
-                        <SummonerMost>
-                            <div>모스트 3</div>
-                            {[0, 1, 2].map((i) => (
-                                <MostBox key={i}>
-                                    <ChampionBox
-                                        key={i}
-                                        src={makeChampionImagePath(summonerMostData?.[i].champion)}
-                                        alt="이미지를 불러올 수 없습니다."
-                                    />
-                                    <GameCount>{summonerMostData?.[i].count}게임
-                                    </GameCount>
-                                    <MostTable>
-                                        <tbody>
-                                            <tr>
-                                                <td>KDA</td>
-                                                <td>승률</td>
-                                            </tr>
-                                            <tr>
-                                                <td>{summonerMostData?.[i].kda}</td>
-                                                <td>{summonerMostData?.[i].winRate}%</td>
-                                            </tr>
-                                        </tbody>
-                                    </MostTable>
-                                </MostBox>
-                            ))}
-                        </SummonerMost>
+                        <SummonerMost />
                     </Board>
                     <Board variants={boardVariants}>
                         <RecentRecord />

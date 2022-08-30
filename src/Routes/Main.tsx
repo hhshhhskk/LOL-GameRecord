@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { ChampionRotations } from "../components/ChampionRotations";
-import { useRecoilState } from "recoil";
-import { summonerNameAtom } from "../atoms"
 
 const Wrapper = styled.div`
   display: flex;
@@ -88,12 +86,9 @@ interface IForm {
 function Main() {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm<IForm>();
-  const [summonerName, setSummonerName] = useRecoilState(summonerNameAtom);
   const onValid = async (data: IForm) => {
     navigate(`/search?keyword=${data.keyword}`);
-    setSummonerName(data.keyword)
   };
-  console.log(summonerName);
   return (
     <>
       <Wrapper>

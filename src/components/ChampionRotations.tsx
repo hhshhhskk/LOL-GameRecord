@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { useQuery } from "react-query";
+import styled from "styled-components";
+import { motion, AnimatePresence } from "framer-motion";
 import { getChampionRotation } from '../api';
 import { makeChampionImagePath } from '../utils';
 

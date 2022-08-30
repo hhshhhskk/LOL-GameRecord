@@ -1,8 +1,8 @@
 import { useRecoilValue } from "recoil";
+import { useQuery } from "react-query";
 import styled from "styled-components";
 import { getRecentRecord } from '../api';
 import { summonerNameAtom } from "../atoms"
-import { useQuery } from "react-query";
 
 const RecentRecordDiv = styled.div`
     flex-direction: row;

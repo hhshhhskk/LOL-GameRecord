@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 const HeaderDiv = styled.div`
   border-bottom: solid white;
+  position: fixed;
+  top: 0;
+  width: 100%;
   fill: #3F8CF2;
   stroke: white;
   stroke-width: 30;
