@@ -3,7 +3,7 @@
 // const API_KEY = "RGAPI-7be927de-f6a2-4fd3-bab4-dd9da85b123c";
 
 //서버 주소
-const sever = "http://3.36.62.11:8080";
+const sever = "https://kmslolservice.cf";
 
 // export interface IgetSummonerId {
 //   id: string;
