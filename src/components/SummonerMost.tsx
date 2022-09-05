@@ -1,9 +1,10 @@
-import { useRecoilValue } from "recoil";
+// import { useRecoilValue } from "recoil";
 import { useQuery } from "react-query";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { getChampionMost } from '../api';
-import { summonerNameAtom } from "../atoms"
+// import { summonerNameAtom } from "../atoms"
+import { useLocation } from "react-router";
 import { makeChampionImagePath } from '../utils';
 
 const SummonerMostDiv = styled.div`
@@ -41,7 +42,9 @@ const MostTable = styled.table`
 
 
 export function SummonerMost() {
-    const summonerName = useRecoilValue(summonerNameAtom);
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const summonerName = searchParams.get("keyword");
     const { data: summonerMostData } = useQuery(["lol"], () => getChampionMost(summonerName),
         {
             enabled: !!summonerName,
@@ -50,7 +53,7 @@ export function SummonerMost() {
     console.log(summonerMostData?.length);
     return (
         <>
-            {summonerMostData?.length === undefined || 0 ?
+            {summonerMostData?.length !== undefined || 0 ?
                 <SummonerMostDiv>
                     <div>모스트 3</div>
                     {[0, 1, 2].map((i) => (
