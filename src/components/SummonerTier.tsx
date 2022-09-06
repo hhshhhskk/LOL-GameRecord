@@ -9,8 +9,8 @@ const SummonerTierDiv = styled.div`
     color: black;
     text-align: center;
     img {
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px;
     }
 `;
 const TierImg = styled.div`

@@ -32,10 +32,10 @@ const Boards = styled(motion.div)`
 `;
 const Board = styled(motion.div)`
   padding: 20px 10px;
-  padding-top: 30px;
+  padding-top: 20px;
   background-color: white;
   border-radius: 5px;
-  min-height: 300px;
+  min-height: 200px;
 `;
 const SummonerBoard = styled(motion.div)`
   display: flex;
@@ -43,7 +43,7 @@ const SummonerBoard = styled(motion.div)`
   padding-top: 30px;
   background-color: white;
   border-radius: 5px;
-  min-height: 300px;
+  min-height: 200px;
 `;
 const SummonerIcon = styled.div`
 img {
