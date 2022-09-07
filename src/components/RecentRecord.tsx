@@ -85,7 +85,7 @@ export function RecentRecord() {
                     <RecordBox key={i}>
                         <ChampionBox
                             key={i}
-                            src={makeChampionImagePath(summonerRecentData?.[i].champion)}
+                            src={makeChampionImagePath(summonerRecentData?.[i].champion.replace(/ /gi, ""))}
                             alt="이미지를 불러올 수 없습니다."
                         />
                         {summonerRecentData?.[i].result === "Victory" ?

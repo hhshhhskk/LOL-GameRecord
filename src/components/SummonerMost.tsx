@@ -60,7 +60,7 @@ export function SummonerMost() {
                         <MostBox key={i}>
                             <ChampionBox
                                 key={i}
-                                src={makeChampionImagePath(summonerMostData?.[i].champion)}
+                                src={makeChampionImagePath(summonerMostData?.[i].champion.replace(/ /gi, ""))}
                                 alt="이미지를 불러올 수 없습니다."
                             />
                             <GameCount>{summonerMostData?.[i].count}게임
