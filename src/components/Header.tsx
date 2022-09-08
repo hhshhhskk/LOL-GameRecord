@@ -9,6 +9,7 @@ const HeaderDiv = styled.div`
   fill: #3F8CF2;
   stroke: white;
   stroke-width: 30;
+  background-color: #3F8CF2;
 `;
 
 const HomeSvg = styled.svg`

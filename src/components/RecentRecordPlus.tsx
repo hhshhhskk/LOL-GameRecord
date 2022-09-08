@@ -10,6 +10,14 @@ const RecentRecordDiv = styled.div`
     flex-direction: row;
     font-size: 30px;
     color: black;
+    background-color: white;
+    border-radius: 50px;
+    padding: 3%;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 10%;
+    margin-bottom: 10%;
 `;
 
 const RecordWrapper = styled.div`
@@ -66,18 +74,24 @@ const GameDate = styled.div`
     font-size: 20px;
 `;
 
-
-export function RecentRecord() {
+export function RecentRecordPlus(props: any) {
     const summonerName = useRecoilValue(summonerNameAtom);
     const { data: summonerRecentData } = useQuery(["lol", "search"], () => getRecentRecord(summonerName),
         {
             enabled: !!summonerName,
         }
     );
-
     return (
         <RecentRecordDiv>
-            {[0, 1, 2].map((i) => (
+            <div>
+                <span>최근 전적</span>
+                <button
+                    onClick={() => props.setClicked("data from child")}
+                >
+                    뒤로가기
+                </button>
+            </div>
+            {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
                 <RecordWrapper key={i}>
                     {summonerRecentData?.[i].type === "Ranked Solo" ?
                         <GameType>솔로랭크</GameType> :

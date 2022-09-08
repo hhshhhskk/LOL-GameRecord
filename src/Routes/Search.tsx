@@ -2,14 +2,15 @@ import { useRecoilState } from "recoil";
 import { useLocation } from "react-router";
 import { useQuery } from "react-query";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { getSummonerId } from '../api';
 import { makeImagePath } from '../utils';
 import { summonerNameAtom } from "../atoms"
 import { SummonerTier } from "../components/SummonerTier";
 import { SummonerMost } from "../components/SummonerMost";
 import { RecentRecord } from "../components/RecentRecord";
-import { useEffect } from "react";
+import { RecentRecordPlus } from "../components/RecentRecordPlus";
+import { useEffect, useState } from "react";
 
 const Wrapper = styled.div`
   display: flex;
@@ -36,6 +37,8 @@ const Board = styled(motion.div)`
   background-color: white;
   border-radius: 5px;
   min-height: 200px;
+  font-size: 30px;
+  color: black;
 `;
 const SummonerBoard = styled(motion.div)`
   display: flex;
@@ -112,40 +115,61 @@ function Search() {
         }
     );
     // console.log(summonerIdData);
+    const [clicked, setClicked] = useState(true);
+    const toggleClicked = () => setClicked((prev) => !prev);
 
     return (
         <>
-            <Wrapper>
-                <Boards variants={boardsVariants} initial="start" animate="end">
-                    <SummonerBoard
-                        variants={boardVariants}
-                    >
-                        <SummonerIcon>
-                            <img
-                                src={makeImagePath(summonerIdData?.profileIconId)}
-                                alt="이미지를 불러올 수 없습니다."
-                            />
-                        </SummonerIcon>
-                        <SummonerInfo>
-                            <SummonerName>
-                                {summonerIdData?.name}
-                            </SummonerName>
-                            <SummonerLevel>
-                                Level.{summonerIdData?.summonerLevel}
-                            </SummonerLevel>
-                        </SummonerInfo>
-                    </SummonerBoard>
-                    <Board variants={boardVariants}>
-                        <SummonerTier />
-                    </Board>
-                    <Board variants={boardVariants}>
-                        <SummonerMost />
-                    </Board>
-                    <Board variants={boardVariants}>
-                        <RecentRecord />
-                    </Board>
-                </Boards>
-            </Wrapper >
+            {clicked
+                ?
+                <Wrapper>
+
+                    <Boards variants={boardsVariants} initial="start" animate="end">
+                        <SummonerBoard
+                            variants={boardVariants}
+                        >
+                            <SummonerIcon>
+                                <img
+                                    src={makeImagePath(summonerIdData?.profileIconId)}
+                                    alt="이미지를 불러올 수 없습니다."
+                                />
+                            </SummonerIcon>
+                            <SummonerInfo>
+                                <SummonerName>
+                                    {summonerIdData?.name}
+                                </SummonerName>
+                                <SummonerLevel>
+                                    Level.{summonerIdData?.summonerLevel}
+                                </SummonerLevel>
+                            </SummonerInfo>
+                        </SummonerBoard>
+                        <Board variants={boardVariants}>
+                            <SummonerTier />
+                        </Board>
+                        <Board variants={boardVariants}>
+                            <SummonerMost />
+                        </Board>
+                        <AnimatePresence>
+                            <Board variants={boardVariants}>
+                                <div>
+                                    <span>최근 전적</span>
+                                    <button
+                                        onClick={toggleClicked}
+                                    >
+                                        최근 10게임 보기
+                                    </button>
+                                </div>
+                                {clicked
+                                    ?
+                                    <RecentRecord />
+                                    : null}
+                            </Board>
+                        </AnimatePresence>
+                    </Boards>
+                </Wrapper >
+                :
+                <RecentRecordPlus setClicked={setClicked} />
+            }
         </>
     )
 
