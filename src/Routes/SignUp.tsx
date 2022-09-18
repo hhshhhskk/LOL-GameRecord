@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled(motion.div)`
   display: flex;
@@ -17,7 +16,7 @@ const Loginform = styled.form`
     color: black;
     border-radius: 20px;
     width: 70%;
-    height: 50%;
+    height: 60%;
     font-size: 40px;
     text-align: center;
 `;
@@ -56,25 +55,22 @@ const LoginButton = styled.button`
     outline: none;
     padding-left: 10px;
     background-color: rgb(233, 233, 233);
-`;
-const ImfoBox = styled.div`
-    font-size: 14px;
-    color: black;
     margin-top: 10%;
-    margin-right: 3%;
-    text-align: right;
 `;
-function Login() {
-    const navigate = useNavigate();
-    const onSignUp = () => {
-        navigate(`/SignUp`);
-    };
+
+function SignUp() {
     return (
         <Wrapper>
             <Loginform>
                 <LoginTitle>
-                    Login
+                    회원가입
                 </LoginTitle>
+                <div>
+                    <IdBox
+                        type="text"
+                        placeholder="닉네임"
+                    />
+                </div>
                 <div>
                     <IdBox
                         type="text"
@@ -87,18 +83,16 @@ function Login() {
                         placeholder="비밀번호"
                     />
                 </div>
-                <LoginButton>Login</LoginButton>
-                <ImfoBox>
-                    <div onClick={onSignUp}>
-                        회원이 아니신가요?
-                    </div>
-                    <div>
-                        비밀번호가 기억 안 날 때
-                    </div>
-                </ImfoBox>
+                <div>
+                    <PwBox
+                        type="password"
+                        placeholder="비밀번호 확인"
+                    />
+                </div>
+                <LoginButton>완료</LoginButton>
             </Loginform>
         </Wrapper>
     )
 }
 
-export default Login;
+export default SignUp;

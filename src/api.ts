@@ -4,6 +4,7 @@
 
 //서버 주소
 const sever = "https://kmslolservice.cf";
+// const sever = "https://13.125.252.81/";
 
 // export interface IgetSummonerId {
 //   id: string;

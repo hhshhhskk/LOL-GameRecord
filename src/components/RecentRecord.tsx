@@ -17,14 +17,14 @@ const RecordWrapper = styled.div`
 
 const GameType = styled.div`
     font-size: 20px;
-    background-color: #D5E3FF;;
+    background-color: #D5E3FF;
     margin-top: 2%;
     border-radius: 15px 15px 0 0;
     padding: 2%;
 `;
 
 const RecordBox = styled.div`
-    background-color: #D5E3FF;;
+    background-color: #D5E3FF;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 15px;

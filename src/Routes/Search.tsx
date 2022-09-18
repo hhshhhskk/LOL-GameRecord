@@ -20,6 +20,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
+  font-family: "Jua";
 `;
 const Boards = styled(motion.div)`
   display: grid;
@@ -66,6 +67,12 @@ const SummonerLevel = styled.div`
     text-align: center;
     font-size: 40px;
     color: black;
+`;
+
+const RecentRecordButton = styled.button`
+    font-size: 15px;
+    border: 0;
+    background-color: white;
 `;
 
 // interface
@@ -153,11 +160,11 @@ function Search() {
                             <Board variants={boardVariants}>
                                 <div>
                                     <span>최근 전적</span>
-                                    <button
+                                    <RecentRecordButton
                                         onClick={toggleClicked}
                                     >
                                         최근 10게임 보기
-                                    </button>
+                                    </RecentRecordButton>
                                 </div>
                                 {clicked
                                     ?
