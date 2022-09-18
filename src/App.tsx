@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import "./App.css";
 import Main from "./Routes/Main"
 import Search from "./Routes/Search";
 import Login from './Routes/Login';
