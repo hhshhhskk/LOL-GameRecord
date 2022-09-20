@@ -1,10 +1,9 @@
-// import { useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { useQuery } from "react-query";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { getChampionMost } from '../api';
-// import { summonerNameAtom } from "../atoms"
-import { useLocation } from "react-router";
+import { summonerNameAtom } from "../atoms"
 import { makeChampionImagePath } from '../utils';
 
 const SummonerMostDiv = styled.div`
@@ -42,9 +41,7 @@ const MostTable = styled.table`
 
 
 export function SummonerMost() {
-    const location = useLocation();
-    const searchParams = new URLSearchParams(location.search);
-    const summonerName = searchParams.get("keyword");
+    const summonerName = useRecoilValue(summonerNameAtom);
     const { data: summonerMostData } = useQuery(["lol"], () => getChampionMost(summonerName),
         {
             enabled: !!summonerName,

@@ -48,6 +48,7 @@ const PwBox = styled.input`
 `;
 
 const LoginButton = styled.button`
+    cursor: pointer;
     width: 500px;
     height: 40px;
     font-size: 15px;
@@ -63,6 +64,7 @@ const ImfoBox = styled.div`
     margin-top: 10%;
     margin-right: 3%;
     text-align: right;
+    cursor: pointer;
 `;
 function Login() {
     const navigate = useNavigate();

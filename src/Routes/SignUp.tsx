@@ -46,7 +46,8 @@ const PwBox = styled.input`
     padding-left: 10px;
 `;
 
-const LoginButton = styled.button`
+const CreateButton = styled.button`
+    cursor: pointer;
     width: 500px;
     height: 40px;
     font-size: 15px;
@@ -89,7 +90,7 @@ function SignUp() {
                         placeholder="비밀번호 확인"
                     />
                 </div>
-                <LoginButton>완료</LoginButton>
+                <CreateButton>완료</CreateButton>
             </Loginform>
         </Wrapper>
     )

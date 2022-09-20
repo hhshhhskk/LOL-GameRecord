@@ -15,6 +15,7 @@ const HeaderDiv = styled.div`
 `;
 
 const HomeSvg = styled.svg`
+  cursor: pointer;
   margin-top: 4px;
   margin-left: 10px;
   width: 30px;
@@ -22,6 +23,7 @@ const HomeSvg = styled.svg`
 `;
 
 const HomeLoginButton = styled.button`
+    cursor: pointer;
     font-size: 22px;
     font-family: "Jua";
     color: white;
