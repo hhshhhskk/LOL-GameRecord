@@ -17,7 +17,7 @@ const Loginform = styled.form`
     color: black;
     border-radius: 20px;
     width: 70%;
-    height: 50%;
+    height: 55%;
     font-size: 40px;
     text-align: center;
 `;
@@ -66,13 +66,22 @@ const ImfoBox = styled.div`
     text-align: right;
     cursor: pointer;
 `;
+
 function Login() {
     const navigate = useNavigate();
     const onSignUp = () => {
         navigate(`/SignUp`);
     };
     return (
-        <Wrapper>
+        <Wrapper
+            initial={{ y: -400, }}
+            animate={{
+                y: 0,
+                transition: {
+                    duration: 0.5
+                }
+            }}
+        >
             <Loginform>
                 <LoginTitle>
                     Login
