@@ -55,6 +55,12 @@ export function getChampionMost(summonerName: string | null) {
         .then((response) => response.json());
 }
 
+// 입력한 소환사 이름으로 숙련도 탑3 챔피언 정보
+export function getChampionMastery(summonerName: string | null) {
+    return fetch(`${sever}/search/riot-api/updateChampionMastery=${summonerName}`)
+        .then((response) => response.json());
+}
+
 // 입력한 소환사 이름으로 최근전적 정보
 export function getRecentRecord(summonerName: string | null) {
     return fetch(`${sever}/search/recentGame?summoner=${summonerName}`)
