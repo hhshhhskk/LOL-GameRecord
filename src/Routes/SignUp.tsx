@@ -11,17 +11,17 @@ const Wrapper = styled(motion.div)`
   height: 100vh;
 `;
 
-const Loginform = styled.form`
+const SignUpform = styled.form`
     background-color: white;
     color: black;
     border-radius: 20px;
     width: 70%;
-    height: 60%;
+    height: 70%;
     font-size: 40px;
     text-align: center;
 `;
 
-const LoginTitle = styled.div`
+const SignUpTitle = styled.div`
     font-size: 66px;
     padding: 10%;
     font-family: "Jua";
@@ -62,14 +62,20 @@ const CreateButton = styled.button`
 function SignUp() {
     return (
         <Wrapper>
-            <Loginform>
-                <LoginTitle>
+            <SignUpform>
+                <SignUpTitle>
                     회원가입
-                </LoginTitle>
+                </SignUpTitle>
                 <div>
                     <IdBox
                         type="text"
                         placeholder="닉네임"
+                    />
+                </div>
+                <div>
+                    <IdBox
+                        type="text"
+                        placeholder="소환사이름"
                     />
                 </div>
                 <div>
@@ -91,7 +97,7 @@ function SignUp() {
                     />
                 </div>
                 <CreateButton>완료</CreateButton>
-            </Loginform>
+            </SignUpform>
         </Wrapper>
     )
 }

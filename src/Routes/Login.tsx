@@ -17,7 +17,7 @@ const Loginform = styled.form`
     color: black;
     border-radius: 20px;
     width: 70%;
-    height: 55%;
+    height: 50%;
     font-size: 40px;
     text-align: center;
 `;
