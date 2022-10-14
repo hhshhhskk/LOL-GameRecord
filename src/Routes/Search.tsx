@@ -1,4 +1,5 @@
 import { useRecoilState } from "recoil";
+import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router";
 import { useQuery } from "react-query";
 import styled from "styled-components";
@@ -131,6 +132,7 @@ const boardVariants = {
 
 function Search() {
     const location = useLocation();
+    const navigate = useNavigate();
     const searchParams = new URLSearchParams(location.search);
     const getSummonerName = searchParams.get("keyword");
     const [summonerName, setSummonerName] = useRecoilState<string | null>(summonerNameAtom);
@@ -151,7 +153,8 @@ function Search() {
     const renewalButtonClicked = () => {
         getRecentRecordRenewal(summonerName);
         getChampionMasteryRenewal(summonerName);
-        window.location.reload();
+        // window.location.reload();
+        navigate(`/search?keyword=${summonerName}`);
     };
 
     return (
