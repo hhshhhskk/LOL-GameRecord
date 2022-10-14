@@ -6,9 +6,16 @@
   <br>
 </p>
 
-목차
+# 목차
+1. 프로젝트 개요/동기
+2. 프로젝트 소개
+3. 기술 스택
+4. 구현 기능
+5. 배운점 & 아쉬운 점
+6. 라이센스
 
 ## 프로젝트 소개
+[Kwak.gq 사이트](https://kwak.gq/)
 
 <p align="justify">
 프로젝트 개요/동기
@@ -49,8 +56,6 @@ GIF Images
 <br>
 
 ## 라이센스
-
-MIT &copy; [NoHack](mailto:lbjp114@gmail.com)
 
 <!-- Stack Icon Refernces -->
 
