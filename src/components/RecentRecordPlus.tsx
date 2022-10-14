@@ -18,6 +18,7 @@ const RecentRecordDiv = styled.div`
     margin: 0 auto;
     margin-top: 10%;
     margin-bottom: 10%;
+    font-family: "Jua";
 `;
 
 const RecordWrapper = styled.div`
@@ -74,6 +75,12 @@ const GameDate = styled.div`
     font-size: 20px;
 `;
 
+const BackButton = styled.button`
+    cursor: pointer;
+    font-size: 15px;
+    border: 0;
+    background-color: white;
+`;
 export function RecentRecordPlus(props: any) {
     const summonerName = useRecoilValue(summonerNameAtom);
     const { data: summonerRecentData } = useQuery(["lol", "search"], () => getRecentRecord(summonerName),
@@ -85,11 +92,11 @@ export function RecentRecordPlus(props: any) {
         <RecentRecordDiv>
             <div>
                 <span>최근 전적</span>
-                <button
+                <BackButton
                     onClick={() => props.setClicked("data from child")}
                 >
                     뒤로가기
-                </button>
+                </BackButton>
             </div>
             {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
                 <RecordWrapper key={i}>

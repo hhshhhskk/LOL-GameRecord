@@ -5,19 +5,11 @@ import { motion } from "framer-motion";
 import { getChampionMost } from '../api';
 import { summonerNameAtom } from "../atoms"
 import { makeChampionImagePath } from '../utils';
-import { useState } from "react";
 
 const SummonerMostDiv = styled.div`
     flex-direction: row;
     font-size: 30px;
     color: black;
-`;
-
-const ChampionMasteryButton = styled.button`
-    cursor: pointer;
-    font-size: 15px;
-    border: 0;
-    background-color: white;
 `;
 
 const UnrankedDiv = styled.div`
@@ -55,9 +47,7 @@ export function SummonerMost() {
             enabled: !!summonerName,
         }
     );
-    console.log(summonerMostData?.length);
-    const [clicked, setClicked] = useState(true);
-    const toggleClicked = () => setClicked((prev) => !prev);
+    console.log(summonerMostData);
     return (
         <>
             {summonerMostData?.length === undefined || 0 ?
@@ -69,72 +59,31 @@ export function SummonerMost() {
                     </UnrankedDiv>
                 </SummonerMostDiv>
                 :
-                clicked // 모스트3 일떄
-                    ?
-                    <SummonerMostDiv>
-                        <div>모스트 3</div>
-                        <ChampionMasteryButton
-                            onClick={toggleClicked}
-                        >
-                            숙력도 TOP3
-                        </ChampionMasteryButton>
-                        {[0, 1, 2].map((i) => (
-                            <MostBox key={i}>
-                                <ChampionBox
-                                    key={i}
-                                    src={makeChampionImagePath(summonerMostData?.[i].champion.replace(/ /gi, ""))}
-                                    alt="이미지를 불러올 수 없습니다."
-                                />
-                                <GameCount>{summonerMostData?.[i].count}게임
-                                </GameCount>
-                                <MostTable>
-                                    <tbody>
-                                        <tr>
-                                            <td>KDA</td>
-                                            <td>승률</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{summonerMostData?.[i].kda}</td>
-                                            <td>{summonerMostData?.[i].winRate}%</td>
-                                        </tr>
-                                    </tbody>
-                                </MostTable>
-                            </MostBox>
-                        ))}
-                    </SummonerMostDiv>
-                    :
-                    // 숙련도3 일때
-                    <SummonerMostDiv>
-                        <div>모스트 3</div>
-                        <ChampionMasteryButton
-                            onClick={toggleClicked}
-                        >
-                            숙력도 TOP3
-                        </ChampionMasteryButton>
-                        {[0, 1, 2].map((i) => (
-                            <MostBox key={i}>
-                                <ChampionBox
-                                    key={i}
-                                    src={makeChampionImagePath(summonerMostData?.[i].champion.replace(/ /gi, ""))}
-                                    alt="이미지를 불러올 수 없습니다."
-                                />
-                                <GameCount>{summonerMostData?.[i].count}게임
-                                </GameCount>
-                                <MostTable>
-                                    <tbody>
-                                        <tr>
-                                            <td>KDA</td>
-                                            <td>승률</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{summonerMostData?.[i].kda}</td>
-                                            <td>{summonerMostData?.[i].winRate}%</td>
-                                        </tr>
-                                    </tbody>
-                                </MostTable>
-                            </MostBox>
-                        ))}
-                    </SummonerMostDiv>
+                <SummonerMostDiv>
+                    {[0, 1, 2].map((i) => (
+                        <MostBox key={i}>
+                            <ChampionBox
+                                key={i}
+                                src={makeChampionImagePath(summonerMostData?.[i].champion?.replace(/ /gi, ""))}
+                                alt="이미지를 불러올 수 없습니다."
+                            />
+                            <GameCount>{summonerMostData?.[i].count}게임
+                            </GameCount>
+                            <MostTable>
+                                <tbody>
+                                    <tr>
+                                        <td>KDA</td>
+                                        <td>승률</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{summonerMostData?.[i].kda}</td>
+                                        <td>{summonerMostData?.[i].winRate}%</td>
+                                    </tr>
+                                </tbody>
+                            </MostTable>
+                        </MostBox>
+                    ))}
+                </SummonerMostDiv>
             }
         </>
     )

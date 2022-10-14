@@ -3,7 +3,7 @@ import { useLocation } from "react-router";
 import { useQuery } from "react-query";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
-import { getSummonerId } from '../api';
+import { getSummonerId, getRecentRecordRenewal, getChampionMasteryRenewal } from '../api';
 import { makeImagePath } from '../utils';
 import { summonerNameAtom } from "../atoms"
 import { SummonerTier } from "../components/SummonerTier";
@@ -11,6 +11,7 @@ import { SummonerMost } from "../components/SummonerMost";
 import { RecentRecord } from "../components/RecentRecord";
 import { RecentRecordPlus } from "../components/RecentRecordPlus";
 import { useEffect, useState } from "react";
+import { ChampionMastery } from "../components/ChampionMastery";
 
 const Wrapper = styled.div`
   display: flex;
@@ -69,7 +70,26 @@ const SummonerLevel = styled.div`
     color: black;
 `;
 
+const RecordRenewalButton = styled.button`
+    font-family: "Jua";
+    cursor: pointer;
+    font-size: 20px;
+    border: 0;
+    border-radius: 10px;
+    width: 150px;
+    height: 100px;
+    color: white;
+    background-color: #9cbbf9;
+`;
+
 const RecentRecordButton = styled.button`
+    cursor: pointer;
+    font-size: 15px;
+    border: 0;
+    background-color: white;
+`;
+
+const ChampionMostButton = styled.button`
     cursor: pointer;
     font-size: 15px;
     border: 0;
@@ -123,8 +143,16 @@ function Search() {
         }
     );
     // console.log(summonerIdData);
-    const [clicked, setClicked] = useState(true);
-    const toggleClicked = () => setClicked((prev) => !prev);
+
+    const [recentClicked, setRecentClicked] = useState(true);
+    const [Mostclicked, setMostClicked] = useState(true);
+    const recentButtonClicked = () => setRecentClicked((prev) => !prev);
+    const mostButtonClicked = () => setMostClicked((prev) => !prev);
+    const renewalButtonClicked = () => {
+        getRecentRecordRenewal(summonerName);
+        getChampionMasteryRenewal(summonerName);
+        window.location.reload();
+    };
 
     return (
         <>
@@ -132,7 +160,7 @@ function Search() {
                 ?
                 <div>Loading...</div>
                 :
-                clicked
+                recentClicked
                     ?
                     <Wrapper>
                         <Boards variants={boardsVariants} initial="start" animate="end">
@@ -152,25 +180,51 @@ function Search() {
                                     <SummonerLevel>
                                         Level.{summonerIdData?.summonerLevel}
                                     </SummonerLevel>
+                                    <SummonerName>
+                                        <RecordRenewalButton
+                                            onClick={renewalButtonClicked}
+                                        >전적 갱신</RecordRenewalButton>
+                                    </SummonerName>
                                 </SummonerInfo>
                             </SummonerBoard>
                             <Board variants={boardVariants}>
                                 <SummonerTier />
                             </Board>
                             <Board variants={boardVariants}>
-                                <SummonerMost />
+                                {Mostclicked
+                                    ?
+                                    <>
+                                        <div>모스트 3</div>
+                                        <ChampionMostButton
+                                            onClick={mostButtonClicked}
+                                        >
+                                            챔피언 숙련도 3
+                                        </ChampionMostButton>
+                                        <SummonerMost />
+                                    </>
+                                    :
+                                    <>
+                                        <div>챔피언 숙련도 3</div>
+                                        <ChampionMostButton
+                                            onClick={mostButtonClicked}
+                                        >
+                                            모스트 3
+                                        </ChampionMostButton>
+                                        <ChampionMastery />
+                                    </>
+                                }
                             </Board>
                             <AnimatePresence>
                                 <Board variants={boardVariants}>
                                     <div>
                                         <span>최근 전적</span>
                                         <RecentRecordButton
-                                            onClick={toggleClicked}
+                                            onClick={recentButtonClicked}
                                         >
                                             최근 10게임 보기
                                         </RecentRecordButton>
                                     </div>
-                                    {clicked
+                                    {recentClicked
                                         ?
                                         <RecentRecord />
                                         : null}
@@ -179,7 +233,7 @@ function Search() {
                         </Boards>
                     </Wrapper >
                     :
-                    <RecentRecordPlus setClicked={setClicked} />
+                    <RecentRecordPlus setClicked={setRecentClicked} />
             }
         </>
     )
