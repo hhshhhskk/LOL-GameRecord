@@ -79,16 +79,26 @@ export function RecentRecord() {
         <RecentRecordDiv>
             {[0, 1, 2].map((i) => (
                 <RecordWrapper key={i}>
-                    {summonerRecentData?.[i].type === "Ranked Solo" ?
-                        <GameType>솔로랭크</GameType> :
-                        <GameType>자유랭크</GameType>
+                    {summonerRecentData?.[i].queueId === 420 ?
+                        <GameType>솔로랭크</GameType>
+                        :
+                        summonerRecentData?.[i].queueId === 440 ?
+                            <GameType>자유랭크</GameType>
+                            :
+                            summonerRecentData?.[i].queueId === 450 ?
+                                <GameType>무작위 총력전</GameType>
+                                :
+                                summonerRecentData?.[i].queueId === 1900 ?
+                                    <GameType>우르프 모드</GameType>
+                                    :
+                                    null
                     }
                     <RecordBox>
                         <ChampionBox
                             src={makeChampionImagePath(summonerRecentData?.[i].champion.replace(/ /gi, ""))}
                             alt="이미지를 불러올 수 없습니다."
                         />
-                        {summonerRecentData?.[i].result === "Victory" ?
+                        {summonerRecentData?.[i].win ?
                             <ResultBox1>승리</ResultBox1>
                             :
                             <ResultBox2>패배</ResultBox2>

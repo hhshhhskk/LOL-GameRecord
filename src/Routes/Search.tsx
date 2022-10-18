@@ -15,8 +15,8 @@ import { ChampionMastery } from "../components/ChampionMastery";
 
 const Wrapper = styled.div`
   display: flex;
+  width: 50%;
   max-width: 800px;
-  width: 100%;
   margin: 0 auto;
   justify-content: center;
   align-items: center;
