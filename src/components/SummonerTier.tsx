@@ -25,7 +25,7 @@ export function SummonerTier() {
     );
     // console.log(summonerInfoData[0]);
 
-    const imgUrl = `../ranked-emblems/${summonerInfoData?.[0].tier}.png`;
+    const imgUrl = `../ranked-emblems/${summonerInfoData?.[1].tier}.png`;
     // console.log(imgUrl);
 
     return (
@@ -37,9 +37,9 @@ export function SummonerTier() {
                     alt="티어 이미지를 불러올 수 없습니다."
                 />
             </TierImg>
-            <div>{summonerInfoData?.[0].tier}</div>
-            <span>{summonerInfoData?.[0].wins}승 </span>
-            <span>{summonerInfoData?.[0].losses}패</span>
+            <div>{summonerInfoData?.[1].tier}</div>
+            <span>{summonerInfoData?.[1].wins}승 </span>
+            <span>{summonerInfoData?.[1].losses}패</span>
         </SummonerTierDiv>
     )
 }

@@ -69,53 +69,60 @@ const GameDate = styled.div`
 
 export function RecentRecord() {
     const summonerName = useRecoilValue(summonerNameAtom);
-    const { data: summonerRecentData } = useQuery(["lol", "search"], () => getRecentRecord(summonerName),
+    const { data: summonerRecentData, isLoading } = useQuery(["lol", "search"], () => getRecentRecord(summonerName),
         {
             enabled: !!summonerName,
         }
     );
 
     return (
-        <RecentRecordDiv>
-            {[0, 1, 2].map((i) => (
-                <RecordWrapper key={i}>
-                    {summonerRecentData?.[i].queueId === 420 ?
-                        <GameType>솔로랭크</GameType>
-                        :
-                        summonerRecentData?.[i].queueId === 440 ?
-                            <GameType>자유랭크</GameType>
-                            :
-                            summonerRecentData?.[i].queueId === 450 ?
-                                <GameType>무작위 총력전</GameType>
+        <>
+            {isLoading
+                ?
+                <div>최근전적을 불러오고 있어요!</div>
+                :
+                <RecentRecordDiv>
+                    {[0, 1, 2].map((i) => (
+                        <RecordWrapper key={i}>
+                            {summonerRecentData?.[i].queueId === 420 ?
+                                <GameType>솔로랭크</GameType>
                                 :
-                                summonerRecentData?.[i].queueId === 1900 ?
-                                    <GameType>우르프 모드</GameType>
+                                summonerRecentData?.[i].queueId === 440 ?
+                                    <GameType>자유랭크</GameType>
                                     :
-                                    null
-                    }
-                    <RecordBox>
-                        <ChampionBox
-                            src={makeChampionImagePath(summonerRecentData?.[i].champion.replace(/ /gi, ""))}
-                            alt="이미지를 불러올 수 없습니다."
-                        />
-                        {summonerRecentData?.[i].win ?
-                            <ResultBox1>승리</ResultBox1>
-                            :
-                            <ResultBox2>패배</ResultBox2>
-                        }
-                        <RecentDataBox>
-                            <KdaBox>
-                                {summonerRecentData?.[i].kill}/
-                                {summonerRecentData?.[i].death}/
-                                {summonerRecentData?.[i].assist}
-                            </KdaBox>
-                        </RecentDataBox>
-                        <GameDate>
-                            {summonerRecentData?.[i].timeStamp}
-                        </GameDate>
-                    </RecordBox>
-                </RecordWrapper>
-            ))}
-        </RecentRecordDiv>
+                                    summonerRecentData?.[i].queueId === 450 ?
+                                        <GameType>무작위 총력전</GameType>
+                                        :
+                                        summonerRecentData?.[i].queueId === 1900 ?
+                                            <GameType>우르프 모드</GameType>
+                                            :
+                                            null
+                            }
+                            <RecordBox>
+                                <ChampionBox
+                                    src={makeChampionImagePath(summonerRecentData?.[i].champion.replace(/ /gi, ""))}
+                                    alt="이미지를 불러올 수 없습니다."
+                                />
+                                {summonerRecentData?.[i].win ?
+                                    <ResultBox1>승리</ResultBox1>
+                                    :
+                                    <ResultBox2>패배</ResultBox2>
+                                }
+                                <RecentDataBox>
+                                    <KdaBox>
+                                        {summonerRecentData?.[i].kill}/
+                                        {summonerRecentData?.[i].death}/
+                                        {summonerRecentData?.[i].assist}
+                                    </KdaBox>
+                                </RecentDataBox>
+                                <GameDate>
+                                    {summonerRecentData?.[i].timeStamp}
+                                </GameDate>
+                            </RecordBox>
+                        </RecordWrapper>
+                    ))}
+                </RecentRecordDiv>
+            }
+        </>
     )
 }
