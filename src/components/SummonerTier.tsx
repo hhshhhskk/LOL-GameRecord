@@ -24,7 +24,14 @@ export function SummonerTier() {
         }
     );
     // console.log(summonerInfoData[0]);
-    const imgUrl = `../ranked-emblems/${summonerInfoData?.[0].tier}.png`;
+    let imgUrl = "";
+    let rankType = "SOLO_0";
+    if (summonerInfoData?.[0].queueType === "RANKED_SOLO_5x5") {
+        imgUrl = `../ranked-emblems/${summonerInfoData?.[0].tier}.png`;
+    } else {
+        imgUrl = `../ranked-emblems/${summonerInfoData?.[1].tier}.png`;
+        rankType = "SOLO_1"
+    }
     // console.log(imgUrl);
 
     return (
@@ -36,9 +43,20 @@ export function SummonerTier() {
                     alt="티어 이미지를 불러올 수 없습니다."
                 />
             </TierImg>
-            <div>{summonerInfoData?.[0].tier}</div>
-            <span>{summonerInfoData?.[0].wins}승 </span>
-            <span>{summonerInfoData?.[0].losses}패</span>
+            {rankType === "SOLO_1" ?
+                <>
+                    <div>{summonerInfoData?.[0].tier}</div>
+                    <span>{summonerInfoData?.[0].wins}승 </span>
+                    <span>{summonerInfoData?.[0].losses}패</span>
+                </>
+                :
+                <>
+                    <div>{summonerInfoData?.[0].tier}</div>
+                    <span>{summonerInfoData?.[0].wins}승 </span>
+                    <span>{summonerInfoData?.[0].losses}패</span>
+                </>
+            }
+
         </SummonerTierDiv>
     )
 }
