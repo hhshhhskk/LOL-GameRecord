@@ -40,12 +40,14 @@
 <summary>펼치기</summary>
 
 * **Main Page**
+![메인로고](https://user-images.githubusercontent.com/67895755/202905191-cb9e2075-cd84-4613-b19f-bcc9700b1943.gif)
+* **Search1 Page**
+![전적검색](https://user-images.githubusercontent.com/67895755/202905199-6636c41d-deaf-46d1-bfc0-8f00931274ea.gif)
+* **Search2 Page**
+![최근전적,로테이션](https://user-images.githubusercontent.com/67895755/202905221-ecca16a3-bdef-4864-a273-c72ccf7e0554.gif)
+* **Login/SignUp Page**
+![로그인](https://user-images.githubusercontent.com/67895755/202905234-7609650c-9fd5-447d-bda8-1a5b7577b44c.gif)
 
-* **Search Page**
-
-* **Login Page**
-
-* **SignUp Page**
 
 <br>
 
