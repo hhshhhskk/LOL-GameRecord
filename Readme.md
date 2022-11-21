@@ -43,6 +43,9 @@
 
 ![메인로고](https://user-images.githubusercontent.com/67895755/202905191-cb9e2075-cd84-4613-b19f-bcc9700b1943.gif)
 
+framer-motion 라이브러리를 사용하여 메인 페이지의 로고에 애니메이션을 추가 하였습니다.
+
+
 * **Search1 Page**
 
 ![전적검색](https://user-images.githubusercontent.com/67895755/202905199-6636c41d-deaf-46d1-bfc0-8f00931274ea.gif)
