@@ -44,7 +44,7 @@
 ![메인로고](https://user-images.githubusercontent.com/67895755/202905191-cb9e2075-cd84-4613-b19f-bcc9700b1943.gif)
 
 - framer-motion 라이브러리를 사용하여 메인 페이지의 로고에 애니메이션을 추가
-- 라이엇 API를 useQuery를 사용하여 로테이션 목록(16개)을 불러와 화면에 8개씩 보이도록 하고 버튼과 useState를 사용하여 배열 값을 변경해 로테이션 목록을 나누어서 출력
+- 라이엇 API를 useQuery를 사용하여 로테이션 목록(16개)을 불러와 화면에 8개씩 보이도록 하고 버튼과 useState를 사용하여 배열 값을 변경해 로테이션 목록을 나누어서 출력(로테이션.gif는 Search2)
 
 * **Search1 Page**
 
