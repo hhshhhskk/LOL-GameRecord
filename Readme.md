@@ -40,11 +40,30 @@
 
 * **Main Page**
 
-* **Search Page**
+![메인로고](https://user-images.githubusercontent.com/67895755/202905191-cb9e2075-cd84-4613-b19f-bcc9700b1943.gif)
 
-* **Login Page**
+- framer-motion 라이브러리를 사용하여 메인 페이지의 로고에 애니메이션을 추가
+- 라이엇 API를 useQuery를 사용하여 로테이션 목록(16개)을 불러와 화면에 8개씩 보이도록 하고 버튼과 useState를 사용하여 배열 값을 변경해 로테이션 목록을 나누어서 출력(로테이션.gif는 Search2)
 
-* **SignUp Page**
+* **Search1 Page**
+
+![전적검색](https://user-images.githubusercontent.com/67895755/202905199-6636c41d-deaf-46d1-bfc0-8f00931274ea.gif)
+
+- framer-motion 라이브러리를 사용하여 소환사정보 박스에 애니메이션을 추가
+- useNavigate를 사용하여 URL에 소환사이름을 보냄
+- useLocation를 사용하여 URL에 소환사이름을 받아옴
+- useRecoil을 사용하여 소환사이름을 저장함
+- useQuery를 사용하여 소환사정보를 가져옴
+- 박스를 컴포넌트화 하여 관리
+
+* **Search2 Page**
+
+![최근전적,로테이션](https://user-images.githubusercontent.com/67895755/202905221-ecca16a3-bdef-4864-a273-c72ccf7e0554.gif)
+
+* **Login/SignUp Page**
+
+![로그인](https://user-images.githubusercontent.com/67895755/202905234-7609650c-9fd5-447d-bda8-1a5b7577b44c.gif)
+
 
 </details>
 <br>
