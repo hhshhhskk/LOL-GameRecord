@@ -84,34 +84,32 @@ function Login() {
     >
       <Loginform>
         <LoginTitle>Login</LoginTitle>
-        {
-          <div>
-            <a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=weeO3S29sWCykO_vmNKh&redirect_uri=https://kmslolservice.cf/login/oauth2/code/naver&state=">
-              <img src="images/login/naver.png"></img>
-            </a>
-            <br></br>
-            <a href="https://kauth.kakao.com/oauth/authorize?client_id=85599fcffe20ab676fa22f2c8f797546&redirect_uri=https://kmslolservice.cf/login/oauth2/code/kakao&response_type=code">
-              <img src="images/login/kakao.png"></img>
-            </a>
-          </div>
-          /* <div>
-                    <IdBox
-                        type="text"
-                        placeholder="아이디"
-                    />
-                </div>
-                <div>
-                    <PwBox
-                        type="password"
-                        placeholder="비밀번호"
-                    />
-                </div> */
-        }
-        {/* <LoginButton>Login</LoginButton>
+        {/* <div>
+          <a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=weeO3S29sWCykO_vmNKh&redirect_uri=https://kmslolservice.cf/login/oauth2/code/naver&state=">
+            <img src="images/login/naver.png"></img>
+          </a>
+          <br></br>
+          <a href="https://kauth.kakao.com/oauth/authorize?client_id=85599fcffe20ab676fa22f2c8f797546&redirect_uri=https://kmslolservice.cf/login/oauth2/code/kakao&response_type=code">
+            <img src="images/login/kakao.png"></img>
+          </a>
+        </div> */}
+        <div>
+          <IdBox
+            type="text"
+            placeholder="아이디"
+          />
+        </div>
+        <div>
+          <PwBox
+            type="password"
+            placeholder="비밀번호"
+          />
+        </div>
+        <LoginButton>Login</LoginButton>
         <ImfoBox>
           <div onClick={onSignUp}>회원이 아니신가요?</div>
           <div>비밀번호가 기억 안 날 때</div>
-        </ImfoBox> */}
+        </ImfoBox>
       </Loginform>
     </Wrapper>
   );
