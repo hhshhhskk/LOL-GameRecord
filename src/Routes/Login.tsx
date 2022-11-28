@@ -17,7 +17,7 @@ const Loginform = styled.form`
   color: black;
   border-radius: 20px;
   width: 70%;
-  height: 50%;
+  height: 60%;
   font-size: 40px;
   text-align: center;
 `;
@@ -66,6 +66,11 @@ const ImfoBox = styled.div`
   text-align: right;
   cursor: pointer;
 `;
+const EasyLoginBox = styled.div`
+  display: flex;
+  margin-top: 5%;
+  justify-content: center;
+`
 
 function Login() {
   const navigate = useNavigate();
@@ -84,15 +89,6 @@ function Login() {
     >
       <Loginform>
         <LoginTitle>Login</LoginTitle>
-        {/* <div>
-          <a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=weeO3S29sWCykO_vmNKh&redirect_uri=https://kmslolservice.cf/login/oauth2/code/naver&state=">
-            <img src="images/login/naver.png"></img>
-          </a>
-          <br></br>
-          <a href="https://kauth.kakao.com/oauth/authorize?client_id=85599fcffe20ab676fa22f2c8f797546&redirect_uri=https://kmslolservice.cf/login/oauth2/code/kakao&response_type=code">
-            <img src="images/login/kakao.png"></img>
-          </a>
-        </div> */}
         <div>
           <IdBox
             type="text"
@@ -106,6 +102,15 @@ function Login() {
           />
         </div>
         <LoginButton>Login</LoginButton>
+        <EasyLoginBox>
+          <a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=weeO3S29sWCykO_vmNKh&redirect_uri=https://kmslolservice.cf/login/oauth2/code/naver&state=">
+            <img src="images/login/naver.png" alt="이미지를 불러올 수 없습니다." width="90%" height="100%" />
+          </a>
+          <a href="https://kauth.kakao.com/oauth/authorize?client_id=85599fcffe20ab676fa22f2c8f797546&redirect_uri=https://kmslolservice.cf/login/oauth2/code/kakao&response_type=code">
+            <img src="images/login/kakao.png"
+              alt="이미지를 불러올 수 없습니다." width="90%" height="100%" />
+          </a>
+        </EasyLoginBox>
         <ImfoBox>
           <div onClick={onSignUp}>회원이 아니신가요?</div>
           <div>비밀번호가 기억 안 날 때</div>
