@@ -15,7 +15,7 @@
 6. 추가할 예정
 
 ## 프로젝트 소개
-[Kwak.gq 사이트](https://kwak.gq/)
+[Kwak.gg 사이트](https://animated-narwhal-b0b715.netlify.app/)
 
 <p align="justify">
 프로젝트 개요/동기
